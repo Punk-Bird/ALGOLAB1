@@ -18,6 +18,7 @@ namespace Algorythm_Logic.Algorythms
         }
         private void QuickSelect(int[] array, int left, int right, int k)
         {
+            if(array.Length ==0) return;
             if (left == right) 
             {
                 return;

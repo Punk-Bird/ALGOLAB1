@@ -11,13 +11,15 @@ namespace Algorythm_Logic.Algorythms
     {
         public override string Description => "Сортировка подсчетом";
 
-        public override int MaxArraySize => 100000000;
+        public override int MaxArraySize => 3000;
         public override void Execute(int[] array)
         {
             _CountingSort(array);
         }
         public static void _CountingSort(int[] array)
         {
+            if(array.Length == 0)
+                return; 
             int max = 0;
             var size = array.Length;
             int[] output = new int[size];

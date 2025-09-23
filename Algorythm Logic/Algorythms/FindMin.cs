@@ -18,7 +18,7 @@ namespace Algorythm_Logic.Algorythms
         public static int _FindMin(int[] array)
         {
             if (array == null || array.Length == 0)
-                throw new ArgumentException("Массив не может быть пустым");
+                return -1; // Или выбросить исключение
 
             int min = array[0];
 
