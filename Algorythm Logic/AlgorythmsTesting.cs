@@ -35,7 +35,7 @@ public class AlgorythmsTesting
         }
         return mx;
     }
-    public static int[][,] GenerateMatixSet(MatrixOperation matrixOp, int maxRank) //Генерирует массив из матриц размером maxRank * NumberOfOperands. Причём для каждого размера подряд идёт NumberOfOperands матриц одного размера 
+    public static int[][,] GenerateMatixSet(MatrixBase matrixOp, int maxRank) //Генерирует массив из матриц размером maxRank * NumberOfOperands. Причём для каждого размера подряд идёт NumberOfOperands матриц одного размера 
     {
         int[][,] set = new int[maxRank * matrixOp.NumberOfOperands][,];
         int curentRank = 0;
@@ -50,7 +50,7 @@ public class AlgorythmsTesting
         }
         return set;
     }
-    public static double[] TestExecutionTime(Algorythm algorythm, int[] data, int[] marking) // Принимает алгоритм, данные и массив разметки (иксов). Возвращает массив времени выполнения алгоритма для каждой метки
+    public static double[] TestExecutionTime(AlgoBase algorythm, int[] data, int[] marking) // Принимает алгоритм, данные и вектор разметки (иксов). Возвращает массив времени выполнения алгоритма для каждой метки
     {
         double[] result = new double[marking.Length];
         for (int i = 0; i < marking.Length; i++)
@@ -65,7 +65,7 @@ public class AlgorythmsTesting
         }
         return result;
     }
-    public static double[] TestExecutionTime(MatrixOperation matrixOp, int[][,] data, int[] marking) // Перегрузка для матриц
+    public static double[] TestExecutionTime(MatrixBase matrixOp, int[][,] data, int[] marking) // Перегрузка для матриц
     {
         int numberOfOperands = matrixOp.NumberOfOperands;
         double[] result = new double[marking.Length]; ;
@@ -80,7 +80,7 @@ public class AlgorythmsTesting
         }
         return result;
     }
-    public static double[] TestExecutionTime(BinaryOperation op, int basis, int[] marking) // Принимает алгоритм, данные и массив разметки (иксов). Возвращает массив времени выполнения алгоритма для каждой метки
+    public static double[] TestExecutionTime(PowBase op, int basis, int[] marking) // Принимает алгоритм, данные и вектор разметки (иксов). Возвращает массив времени выполнения алгоритма для каждой метки
     {
         double[] result = new double[marking.Length];
         for (int i = 0; i < marking.Length; i++)
@@ -91,13 +91,13 @@ public class AlgorythmsTesting
         }
         return result;
     }
-    public static List<Algorythm> FindAvilibleAlgorythms()
+    public static List<AlgoBase> FindAvilibleAlgorythms()
     {
-        var parent = typeof(Algorythm);                                                                     //Получение типа базового класса Algorythm
+        var parent = typeof(AlgoBase);                                                                     //Получение типа базового класса AlgoBase
         var assamblies = AppDomain.CurrentDomain.GetAssemblies();                                           //Получение списка всех сборок в приложении
         var allTypes = assamblies.SelectMany(a => a.GetTypes());                                            // Получение списка всех типов, существующих в приложении
-        var algorythmTypes = allTypes.Where(t => parent.IsAssignableFrom(t) && !t.IsAbstract).ToList();     // Получение списка всех типов, наследуемых от Algorythm
-        var algorthms = algorythmTypes.Select(type => (Algorythm)Activator.CreateInstance(type)).ToList();  // Получение списка из экземпляров классов, наследуемых от Algorythm
+        var algorythmTypes = allTypes.Where(t => parent.IsAssignableFrom(t) && !t.IsAbstract).ToList();     // Получение списка всех типов, наследуемых от AlgoBase
+        var algorthms = algorythmTypes.Select(type => (AlgoBase)Activator.CreateInstance(type)).ToList();  // Получение списка из экземпляров классов, наследуемых от AlgoBase
 
         return algorthms;
     }

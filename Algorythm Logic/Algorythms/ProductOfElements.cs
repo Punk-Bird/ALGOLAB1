@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Algorythms_Logic.Algorythms
 {
-    public class ArrayProduct : Algorythm
+    public class ProductOfElements : AlgoBase
     {
-        public override string Description => "Перемножение всех чисел в массиве";
-        public override int MaxArraySize => 200000000;
+        public override string Description => "Перемножение всех чисел в векторе";
+        public override int MaxVectorSize => 200000000;
 
-        public override void Execute(int[] array)
+        public override void Execute(int[] vector)
         {
             long prod = 1;
-            foreach (int num in array)
+            foreach (int num in vector)
             {
                 prod *= num;
             }

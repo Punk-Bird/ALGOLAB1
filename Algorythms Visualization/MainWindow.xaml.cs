@@ -26,8 +26,8 @@ namespace Algorythms_Visualization
 {
     public partial class MainWindow : Window
     {
-        private List<Algorythm> _avilibleAlgorytmhs;
-        private Algorythm? _selectedAlgorythm;
+        private List<AlgoBase> _avilibleAlgorytmhs;
+        private AlgoBase? _selectedAlgorythm;
         private List<double> _aproxErrorData = new List<double>();
 
         private double[][] MakeExperiments(int[] marking)
@@ -38,16 +38,16 @@ namespace Algorythms_Visualization
             for (int i = 0; i < testAmount; i++)
             {
                 double[] result = new double[marking.Length];
-                if (_selectedAlgorythm is MatrixOperation)
+                if (_selectedAlgorythm is MatrixBase)
                 {
-                    MatrixOperation matrixOP = (MatrixOperation)_selectedAlgorythm;
+                    MatrixBase matrixOP = (MatrixBase)_selectedAlgorythm;
                     var data = AlgorythmsTesting.GenerateMatixSet(matrixOP, maxSize);
                     experiments[i] = AlgorythmsTesting.TestExecutionTime(matrixOP, data, marking);
 
                 }
-                else if (_selectedAlgorythm is BinaryOperation)
+                else if (_selectedAlgorythm is PowBase)
                 {
-                    BinaryOperation binOp = (BinaryOperation)_selectedAlgorythm;
+                    PowBase binOp = (PowBase)_selectedAlgorythm;
                     experiments[i] = AlgorythmsTesting.TestExecutionTime(binOp, (int)Math.Round(basis.Value), marking);
 
                 }
@@ -104,7 +104,7 @@ namespace Algorythms_Visualization
 
             // Подписи левой нижней и верхней оси
             MyPlot.Plot.ShowLegend();
-            if (_selectedAlgorythm is BinaryOperation)
+            if (_selectedAlgorythm is PowBase)
                 MyPlot.Plot.Axes.Left.Label.Text = "Количество шагов";
             else
                 MyPlot.Plot.Axes.Left.Label.Text = "Время (миллисекунды)";
@@ -141,16 +141,15 @@ namespace Algorythms_Visualization
                 MessageBox.Show("Выберите алгоритм");
                 return;
             }
-            else if (_selectedAlgorythm is BinaryOperation)
+            else if (_selectedAlgorythm is PowBase)
             {
-                BinaryOperation binOp = (BinaryOperation) _selectedAlgorythm;
+                PowBase binOp = (PowBase) _selectedAlgorythm;
                 if (!int.TryParse(baseText.Text, out int value))
                 {
                     return;
                 }
             }
             Graph_Build();
-            ErrorButton.Visibility = Visibility.Visible;
         }
         public MainWindow()
         {
@@ -168,7 +167,6 @@ namespace Algorythms_Visualization
                 arrayBlock.Visibility = Visibility.Hidden;
                 stepBlock.Visibility = Visibility.Hidden;
                 basisBlock.Visibility = Visibility.Hidden;
-                ErrorButton.Visibility = Visibility.Hidden;
                 _avilibleAlgorytmhs = AlgorythmsTesting.FindAvilibleAlgorythms();
                 Combox.ItemsSource = _avilibleAlgorytmhs.Select(t => t.Description);
             }
@@ -178,15 +176,15 @@ namespace Algorythms_Visualization
 
             _selectedAlgorythm = _avilibleAlgorytmhs.FirstOrDefault(a => a.Description == Combox.SelectedItem); // устанавливает _avilibleAlgorythm в соответсвии с выбранным элементом комбобокса
             // Пределы для слайдеров:
-            arraySize.Minimum = (_selectedAlgorythm.MaxArraySize / 500) < 2 ? 2 : _selectedAlgorythm.MaxArraySize / 500;
-            arraySize.Maximum = _selectedAlgorythm.MaxArraySize;
+            arraySize.Minimum = (_selectedAlgorythm.MaxVectorSize / 500) < 2 ? 2 : _selectedAlgorythm.MaxVectorSize / 500;
+            arraySize.Maximum = _selectedAlgorythm.MaxVectorSize;
             step.Maximum = arraySize.Maximum / 100;
             step.Minimum = Math.Floor(arraySize.Maximum / 1000);
             step.Minimum = step.Minimum.Equals(0) ? 1 : step.Minimum; 
 
-            if (_selectedAlgorythm is BinaryOperation)
+            if (_selectedAlgorythm is PowBase)
             {
-                BinaryOperation binOp = (BinaryOperation) _selectedAlgorythm;
+                PowBase binOp = (PowBase) _selectedAlgorythm;
                 basis.Maximum = binOp.MaxBasisNumber;
                 basisBlock.Visibility = Visibility.Visible;
             }
@@ -196,21 +194,6 @@ namespace Algorythms_Visualization
             }
             arrayBlock.Visibility = Visibility.Visible;
             stepBlock.Visibility = Visibility.Visible;
-        }
-
-        private void ErrorButton_Click(object sender, RoutedEventArgs e)
-        {
-            string errorMessage = "";
-            for (int i = 0; i < _aproxErrorData.Count; i++)
-            {
-                if (i == 0)
-                    errorMessage += $"Линейная регрессия:\t{_aproxErrorData[i]}";
-                else
-                    errorMessage += $"\n Полином {i}-ой степени:\t{_aproxErrorData[i]}";
-                if (_aproxErrorData[i] == _aproxErrorData.Min())
-                    errorMessage += "✔";
-            }
-            MessageBox.Show(errorMessage, "Ошибка в разных функциях аппроксимации");
         }
     }
    

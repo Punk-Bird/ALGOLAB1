@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Algorythm_Logic.BinaryOperations
 {
-    internal class RecursivePow : BinaryOperation
+    internal class RecPow : PowBase
     {
         private int stepCount;
         public override int StepCount { get { return stepCount; } }
         public override string Description => "Возведение в степень (рекурсивный алгоритм)";
-        public override int MaxArraySize => 2000000000;
+        public override int MaxVectorSize => 2000000000;
         public override int MaxBasisNumber => 2000000000;
         public override void Execute(int number, int exponent)
         {

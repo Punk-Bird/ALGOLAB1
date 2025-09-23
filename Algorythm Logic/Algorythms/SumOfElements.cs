@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Algorythms_Logic.Algorythms
 { 
-    public class ArraySum : Algorythm
+    public class SumOfElements : AlgoBase
     {
-        public override string Description => "Сложение всех чисел в массиве";
-        public override int MaxArraySize => 200000000;
+        public override string Description => "Сложение всех чисел в векторе";
+        public override int MaxVectorSize => 200000000;
 
-        public override void Execute(int[] array)
+        public override void Execute(int[] vector)
         {
             long sum = 0;
-            foreach (int num in array)
+            foreach (int num in vector)
             {
                 sum *= num;
             }

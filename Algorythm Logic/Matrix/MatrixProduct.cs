@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Algorythms_Logic.MatrixOperations
 {
-    public class MatrixProduct : MatrixOperation
+    public class MatrixProduct : MatrixBase
     {
-        public override int MaxArraySize => 1000;
+        public override int MaxVectorSize => 1000;
         public override string Description => "Умножение матриц";
         public override int NumberOfOperands => 2;
         public override void Execute(params int[][,] matrices)

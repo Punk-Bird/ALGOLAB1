@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Algorythm_Logic.Algorythms
 {
-    public class BubbleSort:Algorythm
+    public class BubbleSort:AlgoBase
     {
         public override string Description => "Сортировка Пузырьком";
-        public override int MaxArraySize => 30000;
+        public override int MaxVectorSize => 30000;
 
-        public override void Execute(int[] array)
+        public override void Execute(int[] vector)
         {
-            int n= array.Length;
+            int n= vector.Length;
             bool swapped;
 
             for (int i= 0;i<n-1;i++ ) 
@@ -25,11 +25,11 @@ namespace Algorythm_Logic.Algorythms
 
                 for (int j = 0; j < n - 1 - i; j++)
                 {
-                    if (array[j] > array[j + 1])
+                    if (vector[j] > vector[j + 1])
                     {
-                        int temp = array[j];
-                        array[j] = array[j + 1];
-                        array[j + 1] = temp;
+                        int temp = vector[j];
+                        vector[j] = vector[j + 1];
+                        vector[j + 1] = temp;
                         swapped = true;
                     }
                 }

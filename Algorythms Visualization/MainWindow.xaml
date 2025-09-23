@@ -17,10 +17,9 @@
             <ColumnDefinition Width="71*"/>
             <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
-        <Button Click="Button_Click" Grid.Column="1" x:Name="Button" Background="LightGray" Foreground="Black" VerticalAlignment="Top" FontSize="14" MaxWidth="550" MinWidth="100" MaxHeight="40"  MinHeight="23" Margin="5,10,5,1"  Content="Запуск" FontStyle="Italic"  Grid.Row="0" Grid.RowSpan="2"/>
+        <Button Click="Button_Click" Grid.Column="1" x:Name="Button" Background="LightGreen" Foreground="Black" VerticalAlignment="Top" FontSize="18" MaxWidth="550" MinWidth="100" MaxHeight="40"  MinHeight="23" Margin="5,10,5,1"  Content="Начать тест" FontStyle="Normal"  Grid.Row="0" Grid.RowSpan="2"/>
         <ScottPlot:WpfPlot x:Name="MyPlot" Grid.Row="1"  Grid.RowSpan="2" >
         </ScottPlot:WpfPlot>
-        <Button x:Name="ErrorButton" Click="ErrorButton_Click"  Background="LightGray" Foreground="Black" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" MaxWidth="90" MinWidth="20" MaxHeight="40"  MinHeight="23" Margin="5,10,5,1"  Content="Ошибка" FontStyle="Italic"  Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"/>
         <ComboBox x:Name="Combox"  Margin="10 15 10 5" HorizontalAlignment="Stretch"   VerticalAlignment="Center" MaxWidth="950" MinWidth="530" MaxHeight="50" MinHeight="40" materialDesign:HintAssist.Hint="Выбирите алгоритм" >
         </ComboBox>
 
@@ -38,7 +37,7 @@
                     <RowDefinition Height = "30"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding ElementName=numberOfTests, Path=Value, StringFormat='Количеcтво тестов: {0:F0}'}" 
-           Margin="0 8 0 0"  VerticalAlignment="top" HorizontalAlignment="Center" FontSize="20" MaxHeight="60" MinHeight="40" MaxWidth="400" MinWidth="200"/>
+           Margin="0 8 0 0"  VerticalAlignment="top" HorizontalAlignment="Left" FontSize="20" MaxHeight="60" MinHeight="40" MaxWidth="400" MinWidth="200"/>
                 <Slider x:Name="numberOfTests" Grid.Row="1"  Maximum="20" Minimum="1" TickFrequency="1"   MaxHeight="40"  MinHeight="20" HorizontalAlignment="Stretch" Margin="5 0 7 0" MaxWidth="500" MinWidth="220" VerticalAlignment="Center"/>
             </Grid>
 
@@ -48,7 +47,7 @@
                     <RowDefinition Height = "30"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding ElementName=arraySize, Path=Value, StringFormat='Размер массива: {0:F0}'}" 
-           Margin="0 8 0 0"  VerticalAlignment="top" HorizontalAlignment="Center" FontSize="20" MaxHeight="60" MinHeight="40" MaxWidth="400" MinWidth="200"/>
+           Margin="0 8 0 0"  VerticalAlignment="top" HorizontalAlignment="Left" FontSize="20" MaxHeight="60" MinHeight="40" MaxWidth="400" MinWidth="200"/>
                 <Slider x:Name="arraySize" Grid.Row="1"   MaxHeight="40"  MinHeight="20" TickFrequency="1" HorizontalAlignment="Stretch" Margin="5 0 7 0" MaxWidth="500" MinWidth="220" VerticalAlignment="Center"/>
             </Grid>
 
@@ -58,7 +57,7 @@
                     <RowDefinition Height = "30"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding ElementName=step, Path=Value, StringFormat='Размер шага : {0:F0}'}" 
-           Margin="0 8 0 0"  VerticalAlignment="top" HorizontalAlignment="Center" FontSize="20" MaxHeight="60" MinHeight="40" MaxWidth="400" MinWidth="200"/>
+           Margin="0 8 0 0"  VerticalAlignment="top" HorizontalAlignment="Left" FontSize="20" MaxHeight="60" MinHeight="40" MaxWidth="400" MinWidth="200"/>
                 <Slider x:Name="step" Grid.Row="1" MaxHeight="40"  MinHeight="20" TickFrequency="1" HorizontalAlignment="Stretch" Margin="5 0 7 0" MaxWidth="500" MinWidth="220" VerticalAlignment="Center"/>
             </Grid>
             <Grid x:Name="basisBlock" Grid.Column="1" Grid.Row="3">

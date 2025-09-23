@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Algorythm_Logic.Algorythms
 {
-    internal class EvaluatePolynomialcs : Algorythm
+    internal class NaiveCalculation : AlgoBase
     {
         public override string Description => "Прямое (наивное) вычисление многочлена";
-        public override int MaxArraySize => 10000000;
+        public override int MaxVectorSize => 10000000;
 
         public override void Execute(int[] coefficients)
         {
