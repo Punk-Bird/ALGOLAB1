@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace Algorythm_Logic.Algorythms
 {
-    internal class NaiveCalculation : AlgoBase
+    internal class NativeCalc : AlgoBase
     {
-        public override string Description => "Прямое (наивное) вычисление многочлена";
+        public override string Description => "Прямое вычисление многочлена";
         public override int MaxVectorSize => 10000000;
 
-        public override void Execute(int[] coefficients)
+        public override void Run(int[] cf)
         {
             double x = 1.5;
             double result = 0;
-            int degree = coefficients.Length - 1;
+            int degree = cf.Length - 1;
 
             for (int i = 0; i <= degree; i++)
             {
-                result += coefficients[i] * Math.Pow(x, degree - i);
+                result += cf[i] * Math.Pow(x, degree - i);
             }
 
         }

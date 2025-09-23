@@ -12,7 +12,9 @@ namespace Algorythm_Logic.Algorythms
         public override string Description => "Сортировка подсчетом";
 
         public override int MaxVectorSize => 3000;
-        public override void Execute(int[] array)
+       
+        
+        public override void Run(int[] array)
         {
             _CountingSort(array);
         }

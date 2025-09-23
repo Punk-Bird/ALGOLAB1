@@ -7,18 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Algorythms_Logic.Algorythms
-{ 
-    public class SumOfElements : AlgoBase
+{
+    public class MultElements : AlgoBase
     {
-        public override string Description => "Сложение всех чисел в векторе";
+        public override string Description => "Перемножение всех чисел в векторе";
         public override int MaxVectorSize => 200000000;
 
-        public override void Execute(int[] vector)
+        public override void Run(int[] vector)
         {
-            long sum = 0;
+            long prod = 1;
             foreach (int num in vector)
             {
-                sum *= num;
+                prod *= num;
             }
             return;
         }

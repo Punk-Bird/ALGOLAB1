@@ -59,7 +59,7 @@ public class AlgorythmsTesting
             int[] testData = new int[mark];
             Array.Copy(data, testData, mark);
             Stopwatch stopwatch = Stopwatch.StartNew();
-            algorythm.Execute(testData);
+            algorythm.Run(testData);
             stopwatch.Stop();
             result[i] = (double)stopwatch.ElapsedTicks / 10000; // Время в милисекундах
         }
@@ -80,6 +80,22 @@ public class AlgorythmsTesting
         }
         return result;
     }
+    public static double[] TestExecutionTime(MatrixBase matrixOp, int[][,] data, int[][,]data1, int[] marking) // Перегрузка для матриц n*m
+    {
+        int numberOfOperands = matrixOp.NumberOfOperands;
+        double[] result = new double[marking.Length]; ;
+        for (int i = 0; i < marking.Length; i++)
+        {
+            int[][,] testData = new int[numberOfOperands][,];
+            Array.Copy(data, marking[i], testData, 0, numberOfOperands);
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            matrixOp.Execute(testData);
+            stopwatch.Stop();
+            result[i] = (double)stopwatch.ElapsedTicks / 10000;
+        }
+        return result;
+    }
+
     public static double[] TestExecutionTime(PowBase op, int basis, int[] marking) // Принимает алгоритм, данные и вектор разметки (иксов). Возвращает массив времени выполнения алгоритма для каждой метки
     {
         double[] result = new double[marking.Length];

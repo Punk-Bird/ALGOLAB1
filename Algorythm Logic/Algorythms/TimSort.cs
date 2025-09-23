@@ -10,10 +10,10 @@ namespace Algorythm_Logic.Algorythms
 {
     public class TimSort:AlgoBase
     {
-        public override string Description => "Гибридный алгоритм сортировки Timsort";
+        public override string Description => "Алгоритм сортировки Timsort";
         public override int MaxVectorSize => 100000;
 
-        public override void Execute(int[] vector)
+        public override void Run(int[] vector)
         {
             Timsort_(vector);
         }
@@ -22,7 +22,7 @@ namespace Algorythm_Logic.Algorythms
             int minRun = CalculateMinRun(vector.Length);
             List<int[]> runs = new List<int[]>();
 
-            // Разделение вектора на "runs"
+            
             int start = 0;
             while (start < vector.Length)
             {
@@ -34,7 +34,6 @@ namespace Algorythm_Logic.Algorythms
                 start = end;
             }
 
-            // Слияние "runs"
             while (runs.Count > 1)
             {
                 int[] run1 = runs[0];
@@ -45,7 +44,7 @@ namespace Algorythm_Logic.Algorythms
                 runs.Add(mergedRun);
             }
 
-            // Копирование отсортированных данных обратно в вектор
+            
             if (runs.Count > 0)
             {
                 Array.Copy(runs[0], 0, vector, 0, vector.Length);

@@ -10,6 +10,6 @@ namespace Algorythms_Logic.Algorythms
     {
         public abstract string Description { get; }
         public abstract int MaxVectorSize { get; }
-        public virtual void Execute(int[] vector) { }
+        public virtual void Run(int[] vector) { }
     }
 }

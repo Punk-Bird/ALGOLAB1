@@ -91,16 +91,15 @@ namespace Algorythms_Visualization
             }
             double[] dataY = ToAvarageData(MakeExperiments(dataX));
             var testDataGraph = MyPlot.Plot.Add.Scatter(dataX, dataY);
-            testDataGraph.Label = "Эксперементальные результаты";
-            testDataGraph.LineWidth = 1;
+            
+           
 
             // График аппроксимации
 
             int degree = (int)Math.Min(20, Math.Round(arraySize.Value / step.Value));// Максимальная степень полинома (нужно, что бы избежать краша при некторых значениях arraySize)
             double[] aproxData = Approximation.MakeApproximation(dataX, dataY, degree, _aproxErrorData);
                 var aproxGraph = MyPlot.Plot.Add.Scatter(dataX, aproxData);
-            aproxGraph.Label = "Аппроксимация на основе полученных данных";
-            aproxGraph.LineWidth = 2;
+            
 
             // Подписи левой нижней и верхней оси
             MyPlot.Plot.ShowLegend();
@@ -157,6 +156,7 @@ namespace Algorythms_Visualization
             InitializeComponent();
             Loaded += MainWindow_Loaded;
             Combox.SelectionChanged += Combox_SelectedValueChanged;
+            MyPlot.Plot.Legend.IsVisible = false;
 
         }
 

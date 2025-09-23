@@ -12,7 +12,7 @@ namespace Algorythm_Logic.Algorythms
         public override string Description => "алгоритм для нахождения k-го наименьшего элемента";
 
         public override int MaxVectorSize => 100000000;
-        public override void Execute(int[] array)
+        public override void Run(int[] array)
         {
            QuickSelect(array, 0, array.Length - 1, array.Length / 2);
         }

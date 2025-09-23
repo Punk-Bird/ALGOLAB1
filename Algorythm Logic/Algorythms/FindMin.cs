@@ -11,7 +11,7 @@ namespace Algorythm_Logic.Algorythms
     {
         public override string Description => "нахождение минимального элемента в массиве";
         public override int MaxVectorSize => 1000000;
-        public override void Execute(int[] array)
+        public override void Run(int[] array)
         {
             _FindMin(array);
         }

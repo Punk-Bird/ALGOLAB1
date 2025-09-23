@@ -8,24 +8,27 @@ using System.Threading.Tasks;
 
 namespace Algorythm_Logic.Algorythms
 {
-    public class HornerMethod: AlgoBase
+    public class GornerMethod: AlgoBase
     {
         public override string Description => "Метод Горнера";
+        
+        
+        
         public override int MaxVectorSize => 100000000;
 
-        public override void Execute(int[] vector)
+        public override void Run(int[] vector)
         {
-            double x = 1.5;
-            HornerMethod_(vector, x);
+             double x = 1.5;
+            GornerFunc(vector, x);
         }
-        private static double HornerMethod_(int[] coefficients, double x)
+        private static double GornerFunc(int[] cf, double x)
         {
             double result = 0;
 
-            // Проходим по коэффициентам полинома в прямом порядке
-            for (int i = 0; i < coefficients.Length; i++)
+            
+            for (int i = 0; i < cf.Length; i++)
             {
-                result = result * x + coefficients[i];
+                result = result * x + cf[i];
             }
 
             return result;
