@@ -7,11 +7,11 @@ using Algorythms_Logic.Algorythms;
 
 namespace Algorythm_Logic.Algorythms
 {
-    internal class QuikSelect : Algorythm
+    internal class QuikSelect : AlgoBase
     {
         public override string Description => "алгоритм для нахождения k-го наименьшего элемента";
 
-        public override int MaxArraySize => 100000000;
+        public override int MaxVectorSize => 100000000;
         public override void Execute(int[] array)
         {
            QuickSelect(array, 0, array.Length - 1, array.Length / 2);

@@ -7,10 +7,10 @@ using Algorythms_Logic.Algorythms;
 
 namespace Algorythm_Logic.Algorythms
 {
-    internal class FindMin : Algorythm
+    internal class FindMin : AlgoBase
     {
         public override string Description => "нахождение минимального элемента в массиве";
-        public override int MaxArraySize => 1000000;
+        public override int MaxVectorSize => 1000000;
         public override void Execute(int[] array)
         {
             _FindMin(array);

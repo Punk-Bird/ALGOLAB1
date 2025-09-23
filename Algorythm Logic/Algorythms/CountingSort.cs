@@ -7,11 +7,11 @@ using Algorythms_Logic.Algorythms;
 
 namespace Algorythm_Logic.Algorythms
 {
-    internal class CountingSort : Algorythm
+    internal class CountingSort : AlgoBase
     {
         public override string Description => "Сортировка подсчетом";
 
-        public override int MaxArraySize => 3000;
+        public override int MaxVectorSize => 3000;
         public override void Execute(int[] array)
         {
             _CountingSort(array);
