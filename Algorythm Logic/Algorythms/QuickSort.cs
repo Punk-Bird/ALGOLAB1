@@ -8,50 +8,50 @@ using System.Threading.Tasks;
 
 namespace Algorythm_Logic.Algorythms
 {
-    public class QuickSort : Algorythm
+    public class QuickSort : AlgoBase
     {
         public override string Description => "Быстрая сортировка";
-        public override int MaxArraySize => 10000000;
+        public override int MaxVectorSize => 10000000;
 
-        public override void Execute(int[] array)
+        public override void Execute(int[] vector)
         {
-            QuickSort_(array, 0,array.Length-1);
+            QuickSort_(vector, 0,vector.Length-1);
         }
-        private static void QuickSort_(int[] array, int low, int high)
+        private static void QuickSort_(int[] vector, int low, int high)
         {
             if (low < high)
             {
                 // Находим индекс опорного элемента
-                int pi = Partition(array, low, high);
+                int pi = Partition(vector, low, high);
 
                 // Рекурсивно сортируем элементы до и после опорного элемента
-                QuickSort_(array, low, pi - 1);
-                QuickSort_(array, pi + 1, high);
+                QuickSort_(vector, low, pi - 1);
+                QuickSort_(vector, pi + 1, high);
             }
         }
-        private static int Partition(int[] array, int low, int high)
+        private static int Partition(int[] vector, int low, int high)
         {
-            // Опорный элемент (pivot) - последний элемент массива
-            int pivot = array[high];
+            // Опорный элемент (pivot) - последний элемент вектора
+            int pivot = vector[high];
             int i = low - 1;
 
             for (int j=low;j<high;j++)
             {
                 // Если текущий элемент меньше или равен опорному
-                if (array[j]<= pivot)
+                if (vector[j]<= pivot)
                 {
                     i++;
 
-                    // Меняем местами array[i] и array[j]
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
+                    // Меняем местами vector[i] и vector[j]
+                    int temp = vector[i];
+                    vector[i] = vector[j];
+                    vector[j] = temp;
                 }
             }
-            // Меняем местами array[i+1] и опорный элемент (array[high])
-            int temp1 = array[i + 1];
-            array[i + 1] = array[high];
-            array[high] = temp1;
+            // Меняем местами vector[i+1] и опорный элемент (vector[high])
+            int temp1 = vector[i + 1];
+            vector[i + 1] = vector[high];
+            vector[high] = temp1;
             return i + 1;
         }
     }

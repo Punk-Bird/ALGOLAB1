@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Algorythms_Logic.BinaryOperations
 {
-    internal class EasyPow : BinaryOperation
+    internal class Pow : PowBase
     {
         private int stepCount;
         public override int StepCount { get { return stepCount; } }
         public override string Description => "Наивный алгоритм возведения в степень";
-        public override int MaxArraySize => 200000000;
+        public override int MaxVectorSize => 200000000;
         public override int MaxBasisNumber => 2000000000;
         public override void Execute(int number, int exponent) 
         {

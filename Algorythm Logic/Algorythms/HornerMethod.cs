@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Algorythm_Logic.Algorythms
 {
-    public class HornerMethod: Algorythm
+    public class HornerMethod: AlgoBase
     {
-        public override string Description => "Метод Горнора";
-        public override int MaxArraySize => 100000000;
+        public override string Description => "Метод Горнера";
+        public override int MaxVectorSize => 100000000;
 
-        public override void Execute(int[] array)
+        public override void Execute(int[] vector)
         {
             double x = 1.5;
-            HornerMethod_(array, x);
+            HornerMethod_(vector, x);
         }
         private static double HornerMethod_(int[] coefficients, double x)
         {

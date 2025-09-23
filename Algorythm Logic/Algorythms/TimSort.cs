@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace Algorythm_Logic.Algorythms
 {
-    public class TimSort:Algorythm
+    public class TimSort:AlgoBase
     {
         public override string Description => "Гибридный алгоритм сортировки Timsort";
-        public override int MaxArraySize => 100000;
+        public override int MaxVectorSize => 100000;
 
-        public override void Execute(int[] array)
+        public override void Execute(int[] vector)
         {
-            Timsort_(array);
+            Timsort_(vector);
         }
-        private static void Timsort_(int[] array)
+        private static void Timsort_(int[] vector)
         {
-            int minRun = CalculateMinRun(array.Length);
+            int minRun = CalculateMinRun(vector.Length);
             List<int[]> runs = new List<int[]>();
 
-            // Разделение массива на "runs"
+            // Разделение вектора на "runs"
             int start = 0;
-            while (start < array.Length)
+            while (start < vector.Length)
             {
-                int end = FindRun(array, start);
+                int end = FindRun(vector, start);
                 int[] run = new int[end - start];
-                Array.Copy(array, start, run, 0, run.Length);
+                Array.Copy(vector, start, run, 0, run.Length);
                 InsertionSort(run);
                 runs.Add(run);
                 start = end;
@@ -45,10 +45,10 @@ namespace Algorythm_Logic.Algorythms
                 runs.Add(mergedRun);
             }
 
-            // Копирование отсортированных данных обратно в массив
+            // Копирование отсортированных данных обратно в вектор
             if (runs.Count > 0)
             {
-                Array.Copy(runs[0], 0, array, 0, array.Length);
+                Array.Copy(runs[0], 0, vector, 0, vector.Length);
             }
         }
 
@@ -63,51 +63,51 @@ namespace Algorythm_Logic.Algorythms
             return n + r;
         }
 
-        private static int FindRun(int[] array, int start)
+        private static int FindRun(int[] vector, int start)
         {
             int end = start + 1;
-            if (end >= array.Length)
+            if (end >= vector.Length)
                 return end;
 
-            if (array[start] > array[end])
+            if (vector[start] > vector[end])
             {
-                while (end < array.Length && array[end - 1] > array[end])
+                while (end < vector.Length && vector[end - 1] > vector[end])
                     end++;
-                Reverse(array, start, end - 1);
+                Reverse(vector, start, end - 1);
             }
             else
             {
-                while (end < array.Length && array[end - 1] <= array[end])
+                while (end < vector.Length && vector[end - 1] <= vector[end])
                     end++;
             }
 
             return end;
         }
 
-        private static void Reverse(int[] array, int start, int end)
+        private static void Reverse(int[] vector, int start, int end)
         {
             while (start < end)
             {
-                int temp = array[start];
-                array[start] = array[end];
-                array[end] = temp;
+                int temp = vector[start];
+                vector[start] = vector[end];
+                vector[end] = temp;
                 start++;
                 end--;
             }
         }
 
-        private static void InsertionSort(int[] array)
+        private static void InsertionSort(int[] vector)
         {
-            for (int i = 1; i < array.Length; i++)
+            for (int i = 1; i < vector.Length; i++)
             {
-                int key = array[i];
+                int key = vector[i];
                 int j = i - 1;
-                while (j >= 0 && array[j] > key)
+                while (j >= 0 && vector[j] > key)
                 {
-                    array[j + 1] = array[j];
+                    vector[j + 1] = vector[j];
                     j--;
                 }
-                array[j + 1] = key;
+                vector[j + 1] = key;
             }
         }
 
